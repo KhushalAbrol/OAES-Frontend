@@ -1,0 +1,39 @@
+<div class="container parent">
+    <div class="form mat-elevation-z8">
+        <h2>Login</h2>
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" ngNativeValidate>
+            <div>
+                <label for="loginOption">Select login option:</label>
+                <mat-radio-group class="radio-group" id="loginOption" [(ngModel)]="optionValue" name="loginOption"
+                    required>
+                    <mat-radio-button class="radio-button" value="email">
+                        Email Id
+                    </mat-radio-button>
+                    <mat-radio-button class="radio-button" value="userId">
+                        User Id
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div *ngIf="optionValue=='email'">
+                <mat-form-field appearance="fill">
+                    <mat-label>Email Id</mat-label>
+                    <input type="text" ngModel id="email" name="email" required matInput />
+                </mat-form-field>
+            </div>
+            <div *ngIf="optionValue=='userId'">
+                <mat-form-field appearance="fill">
+                    <mat-label>User Id</mat-label>
+                    <input type="text" ngModel id="userId" name="userId" required matInput />
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input type="password" class="form-control" ngModel name="password" id="password"
+                    required matInput>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button (onclick)="login(loginForm)">Login</button>
+        </form>
+    </div>
+</div>

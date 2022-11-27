@@ -6,6 +6,10 @@ export const environment = {
   production: false
 };
 
+export const baseUrlLogin = `http://localhost:9092`;
+export const baseUrlExam = `http://localhost:9091`;
+export const baseUrlStudent = `http://localhost:9090`;
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
