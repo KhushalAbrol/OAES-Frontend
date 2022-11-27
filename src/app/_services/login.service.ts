@@ -12,6 +12,7 @@ export class LoginService {
 
   
   public login(loginData: any){
+    // console.log("--->", loginData);
     return this.httpClient.post(`${baseUrlLogin}/login`, loginData);
   }
 
