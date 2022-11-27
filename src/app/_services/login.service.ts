@@ -11,9 +11,14 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
   
-  public login(loginData: any){
+  public loginByUserID(loginData: any){
     // console.log("--->", loginData);
-    return this.httpClient.post(`${baseUrlLogin}/login`, loginData);
+    return this.httpClient.post(`${baseUrlLogin}/login/userID`, loginData);
+  }
+
+  public loginByEmail(loginData: any){
+    // console.log("--->", loginData);
+    return this.httpClient.post(`${baseUrlLogin}/login/email`, loginData);
   }
 
   public setId(id: any){

@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     if(loginForm.value.loginOption === "userId"){
       this.form1.userID = loginForm.value.userId;
       this.form1.password = loginForm.value.password;
-      this.loginService.login(this.form1).subscribe({
+      this.loginService.loginByUserID(this.form1).subscribe({
         next: (response: any) => {
           const role = Object.keys(response).length === 8 ? "student" : "coordinator";
           if (role === 'student') {
@@ -50,11 +50,12 @@ export class LoginComponent implements OnInit {
         }
       });
     }else{
-      this.form2.emailID = loginForm.value.email;
+      this.form2.email = loginForm.value.email;
       this.form2.password = loginForm.value.password;
-      this.loginService.login(this.form2).subscribe({
+      this.loginService.loginByEmail(this.form2).subscribe({
         next: (response: any) => {
-          const role = Object.keys(response).length === 8 ? "student" : "coordinator";
+          console.log(response);
+          const role = Object.keys(response).length === 9 ? "student" : "coordinator";
           if (role === 'student') {
             this.loginService.setId(response.userID);
             this.router.navigate([`/exam/`]);   
@@ -64,7 +65,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/login']);
           }
         },
-        error: (error) => {
+        error: (error: any) => {
           console.log("error", error);
         }
       });
